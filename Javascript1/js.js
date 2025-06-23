@@ -1,3 +1,6 @@
+/* Derek Hargitt 06/22/2025
+Adapted from https://javascript30.com/
+(15 - LocalStorage) */
 
   // Simplified and made more readable
   const addItemsBtn = document.querySelector('.add-items');
