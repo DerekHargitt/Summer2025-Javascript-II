@@ -1,0 +1,21 @@
+/* Derek Hargitt 6/29/2025 */
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}
+
+header, footer {
+  background-color: #222;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+main {
+  padding: 1em;
+  background-color: white;
+}
