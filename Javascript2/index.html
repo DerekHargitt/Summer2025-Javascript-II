@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- Derek Hargitt 07/06/2025 -->
+<!-- Adapted from https://javascript30.com/
+     (23 - Speech Synthesis) -->
+<!-- Added elements: form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Synthesis</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/✅" />
+</head>
+<body>
+
+<form class="voiceinator" onsubmit="return false;"> <!-- Wrapped inputs in a form -->
+  <h1>The Voiceinator 5000</h1>
+  
+  <label for="voices">Select A Voice</label>
+  <select id="voices" name="voice">
+    <option value="">Select A Voice</option>
+  </select>
+
+  <label for="rate">Rate:</label>
+  <input id="rate" name="rate" type="range" min="0" max="3" value="1" step="0.1">
+
+  <label for="pitch">Pitch:</label>
+  <input id="pitch" name="pitch" type="range" min="0" max="2" step="0.1">
+
+  <label for="text">Text to Speak:</label>
+  <textarea id="text" name="text" rows="5">Hello! I love JavaScript 👍</textarea>
+  <span class="button-group"> <!-- Wrapped buttons so they can adjust by screen size -->
+  <button id="speak" type="button">Speak</button>
+  <button id="stop" type="button">Stop!</button>
+  </span>
+  <div id="status" aria-live="polite" role="status"></div>
+</form>
+
+<script type="text/javascript" src="js.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+/* Derek Hargitt 07/06/2025
+Adapted from https://javascript30.com/
+(23 - Speech Synthesis) */
+/* Made changes to colors, some mobile optimization */
+html {
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #703e99;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+
+  background-image:
+  radial-gradient(circle at 100% 150%, #342540 24%, #231330 25%, #231330 28%, #342540 29%, #342540 36%, #231330 36%, #231330 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, #342540 24%, #231330 25%, #231330 28%, #342540 29%, #342540 36%, #231330 36%, #231330 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, #231330 10%, #342540 11%, #342540 23%, #231330 24%, #231330 30%, #342540 31%, #342540 43%, #231330 44%, #231330 50%, #342540 51%, #342540 63%, #231330 64%, #231330 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, #231330 5%, #342540 6%, #342540 15%, #231330 16%, #231330 20%, #342540 21%, #342540 30%, #231330 31%, #231330 35%, #342540 36%, #342540 45%, #231330 46%, #231330 49%, transparent 50%, transparent),
+  radial-gradient(circle at 0    50%, #231330 5%, #342540 6%, #342540 15%, #231330 16%, #231330 20%, #342540 21%, #342540 30%, #231330 31%, #231330 35%, #342540 36%, #342540 45%, #231330 46%, #231330 49%, transparent 50%, transparent);
+  background-size:100px 50px;
+}
+
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: 1px solid #703e99;
+  outline-offset: 2px;
+}
+
+.voiceinator {
+  max-width: 50rem;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  background: white;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
+}
+
+h1 {
+  width: calc(100% + 4rem);
+  margin: -2rem 0 2rem -2rem;
+  padding: .5rem;
+  background: #703e99;
+  border-bottom: 5px solid #7f7a83;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 100;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 3px 3px 0 #7f7a83;
+}
+
+.voiceinator input,
+.voiceinator select,
+.voiceinator textarea {
+  width: 100%;
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  border: 0;
+  font-size: 2rem;
+  background: #F7F7F7;
+  outline: 0;
+}
+
+textarea {
+  height: 20rem;
+}
+/* Changed styles for input type: range */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Track - WebKit */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: #703e99;
+  border-radius: 4px;
+}
+
+/* Thumb - WebKit */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  background: #703e99;
+  border-radius: 50%;
+  margin-top: -8.5px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #7f7a83;
+}
+
+/* Track - Firefox */
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: #703e99;
+  border-radius: 4px;
+}
+
+/* Thumb - Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 25px;
+  width: 25px;
+  background: #703e99;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #7f7a83;
+}
+
+/* Track - IE */
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+  background: #703e99;
+  border-radius: 4px;
+}
+
+input[type="range"]::-ms-fill-upper {
+  background: #703e99;
+  border-radius: 4px;
+}
+
+/* Thumb - IE */
+input[type="range"]::-ms-thumb {
+  height: 25px;
+  width: 25px;
+  background: #703e99;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+input[type="range"]::-ms-thumb:hover {
+  background: #7f7a83;
+}
+/*Improved button appearance for smaller screens*/
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.button-group button {
+  background: #703e99;
+  border: none;
+  padding: 1rem 0;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  border-bottom: 5px solid #7f7a83;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.button-group button:active {
+  background: #e5b800;
+  transform: translateY(2px);
+}
+
+.button-group button:focus-visible {
+  outline: 3px solid #F3C010;
+  outline-offset: 3px;
+}
+
+@media (min-width: 50em) {
+  .button-group {
+    flex-direction: row;
+  }
+  .button-group button {
+    flex: 1;
+  }
+}
+
+
+
+
+
+
+
