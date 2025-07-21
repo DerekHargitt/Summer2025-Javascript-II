@@ -1,0 +1,80 @@
+/* Derek Hargitt 07/13/2025
+Adapted from https://javascript30.com/
+(02 - JS and CSS Clock) */
+    html {
+      background: #703e99 url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+    html::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(112, 62, 153, 0.85);
+      z-index: -1;
+    }
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    select {
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      background-color: #231330;
+      color: #FFF;
+    }
+    h1 {
+      color: #FFF;
+    }
+    .time-text {
+      font-size: 3rem;
+      color: #FFF;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid #231330;
+      border-radius: 50%;
+      margin: 0 auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #231330,
+        inset 0 0 10px #231330,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px);
+    }
+
+    .hand {
+      width: 50%;
+      height: 6px;
+      background: #231330;
+      position: absolute;
+      top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    }

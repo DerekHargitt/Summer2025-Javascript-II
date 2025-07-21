@@ -1,0 +1,40 @@
+<!-- Derek Hargitt 07/20/2025 -->
+<!-- Adapted from https://javascript30.com/
+     (02 - JS and CSS Clock) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <link rel="stylesheet" href="css.css">
+  <link rel="icon" href="https://fav.farm/✅" />
+</head>
+<body>
+
+  <div>
+    <div><h1>What's the time?</h1></div> <!-- Added Header -->
+    <select id="timezoneSelect"> <!-- Added Dropdown to select timezone -->
+      <option value="America/New_York">Eastern Time (ET)</option>
+      <option value="America/Chicago">Central Time (CT)</option>
+      <option value="America/Denver">Mountain Time (MT)</option>
+      <option value="America/Los_Angeles">Pacific Time (PT)</option>
+      <option value="America/Anchorage">Alaska Time (AKT)</option>
+      <option value="Pacific/Honolulu">Hawaii Time (HAST)</option>
+    </select>
+    <div class="time-text" id="timeText"></div>  <!-- Added Digital time display -->
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+
+  </style>
+
+  <script src="js.js" defer></script>
+</body>
+</html>
