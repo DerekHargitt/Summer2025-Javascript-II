@@ -36,8 +36,9 @@ recognition.addEventListener('end', () => {
 });
 
 recognition.addEventListener('end', () => recognition.start()); //Fixed this event listener to correctly call the speech recognition again when it ends
-
-recognition.start();
+document.body.addEventListener('click', () => {
+  recognition.start();
+}); //wait for user interaction to start
 
 //Added a button to download the transcript to a txt file
 function pad(number) {
