@@ -28,6 +28,7 @@ const transcript = Array.from(e.results)
 });
 beginBtn.addEventListener('click', () => {
   recognition.start();
+  beginBtn.style.display = 'none';
 }, { once: true }); //wait for user interaction to start
 
 //Added event listeners to update the screen reader accessibility label to announce when speech recognition starts and ends.
