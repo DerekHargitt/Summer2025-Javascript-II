@@ -6,7 +6,7 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 const recognition = new SpeechRecognition();
 recognition.interimResults = true;
 recognition.lang = 'en-US';
-
+const beginBtn = document.querySelector('#begin');
 let p = document.createElement('p');
 const words = document.querySelector('.words');
 words.appendChild(p);
@@ -26,6 +26,9 @@ const transcript = Array.from(e.results)
         words.appendChild(p);
     }
 });
+beginBtn.addEventListener('click', () => {
+  recognition.start();
+}, { once: true }); //wait for user interaction to start
 
 //Added event listeners to update the screen reader accessibility label to announce when speech recognition starts and ends.
 recognition.addEventListener('start', () => {
@@ -33,12 +36,8 @@ recognition.addEventListener('start', () => {
 });
 recognition.addEventListener('end', () => {
     document.getElementById('status').textContent = 'Speech recognition ended.';
+    recognition.start();//Fixed this event listener to correctly call the speech recognition again when it ends
 });
-
-recognition.addEventListener('end', () => recognition.start()); //Fixed this event listener to correctly call the speech recognition again when it ends
-document.body.addEventListener('click', () => {
-  recognition.start();
-}, { once: true }); //wait for user interaction to start
 
 //Added a button to download the transcript to a txt file
 function pad(number) {
