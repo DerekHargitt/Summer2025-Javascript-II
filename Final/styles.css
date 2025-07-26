@@ -1,0 +1,82 @@
+/* Derek Hargitt 07/25/2025 Final */
+body {
+  font-family: "IM Fell English", sans-serif;
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #231330;
+  color: #777578;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  color: #703e99;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-family: "IM Fell English", sans-serif;
+  background-color: #703e99;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #FFF;
+  color: #703e99;
+  outline: none;
+}
+
+#results p {
+  background: white;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  color: #703e99;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
