@@ -1,0 +1,28 @@
+<!-- Derek Hargitt 07/25/2025
+Adapted from https://javascript30.com/
+(20 - Speech Detection)
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speech Recognition</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400&amp;family=IM+Fell+English:ital,wght@0,400;1,400&amp;family=Poppins:ital,wght@0,400;0,700;1,400;1,700">
+  <link rel="icon" href="https://fav.farm/✅" />
+</head>
+<body>
+  <h1>Speech Recognition!</h1>
+  <main class="main">
+  <button id="download">Download Transcript</button>
+  <div class="words" contenteditable>
+  </div>
+
+  <div id="status" aria-live="polite" style="position:absolute;left:-9999px;"></div> <!-- Added a screen reader accessibility label to announce when speech recognition starts and ends -->
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
